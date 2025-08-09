@@ -1,0 +1,4 @@
+/home/halulat/Projects/DialogueTool/obj/Debug/net8.0/DialogueTool.GeneratedMSBuildEditorConfig.editorconfig
+/home/halulat/Projects/DialogueTool/obj/Debug/net8.0/DialogueTool.AssemblyInfoInputs.cache
+/home/halulat/Projects/DialogueTool/obj/Debug/net8.0/DialogueTool.AssemblyInfo.cs
+/home/halulat/Projects/DialogueTool/obj/Debug/net8.0/DialogueTool.csproj.CoreCompileInputs.cache
