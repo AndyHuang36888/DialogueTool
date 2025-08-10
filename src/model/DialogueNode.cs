@@ -15,8 +15,11 @@ namespace DialogueSystem
         // Unique identifier for this dialogue node.
         public string Id { get; set; }
 
-        // Set of components that make up this dialogue node.
-        public hashset<DialogueComponent> Components { get; set; }
+        // Set of choices available in this dialogue node.
+        public HashSet<ChoiceComponent> Choices { get; set; }
+
+        // Text displayed in this dialogue node.
+        public TextComponent Text { get; set; }
 
         // Excutes the components in this dialogue node in order.
         public void Execute()

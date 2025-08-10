@@ -1,5 +1,4 @@
 using System;
-
 namespace DialogueSystem
 {
     // Base class for all dialogue components.
@@ -7,9 +6,6 @@ namespace DialogueSystem
     {
         // A unique identifier for this component..
         public string Id { get; set; }
-
-        public list<DialogueComponent> NextComponents { get; set; }
-
         // Constructor for the DialogueComponent.
         protected DialogueComponent(string id)
         {
