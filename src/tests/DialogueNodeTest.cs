@@ -3,4 +3,5 @@ using DialogueNode = DialogueSystem.DialogueNode;
 
 public class DialogueNodeTest
 {
+
 }

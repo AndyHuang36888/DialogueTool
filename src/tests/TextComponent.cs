@@ -10,7 +10,7 @@ public class TextComponentTest
 
         // check correct id is set
         TextComponent textComponent = new TextComponent(expectedId);
-        Assert.Equal(expectedId, textComponent.Id);;
+        Assert.Equal(expectedId, textComponent.ID);
     }
 
     [Fact]
@@ -61,7 +61,7 @@ public class TextComponentTest
 
         // Remove the text entry for Dog Language
         textComponent.RemoveText(keyDog);
-        
+
         // Check if dodg language text is removed, 
         // check if it throws an exception
         Assert.Throws<KeyNotFoundException>(() => textComponent.GetText(keyDog));
@@ -72,5 +72,20 @@ public class TextComponentTest
         textComponent.RemoveText(keyCat);
         Assert.Throws<KeyNotFoundException>(() => textComponent.GetText(keyCat));
 
+    }
+
+    [Fact]
+    public void TestGetTextThrowError()
+    {
+        string keyDog = "Dog Language";
+        string valueDog = "Woof Woof";
+
+        TextComponent textComponent = new TextComponent("text1");
+
+        // Add a text entry
+        textComponent.SetText(keyDog, valueDog);
+
+        // Check if it throws an exception for a key that does not exist
+        Assert.Throws<KeyNotFoundException>(() => textComponent.GetText("Nonexistent Key"));
     }
 }

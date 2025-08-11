@@ -13,19 +13,29 @@ namespace DialogueSystem
         public string Speaker { get; set; }
 
         // Unique identifier for this dialogue node.
-        public string Id { get; set; }
+        // !!! do I need this
+        public string ID { get; set; }
 
         // Set of choices available in this dialogue node.
-        public HashSet<ChoiceComponent> Choices { get; set; }
+        public HashSet<ChoiceComponent> Choices { get; }
 
         // Text displayed in this dialogue node.
         public TextComponent Text { get; set; }
 
-        // Excutes the components in this dialogue node in order.
-        public void Execute()
-        {
-            // TODO
-        }
+        public LogicComponent Logic { get; set; }
 
+
+        public DialogueNode(string id, string speaker = "")
+        {
+            this.ID = id;
+            this.Speaker = speaker;
+            this.Choices = new HashSet<ChoiceComponent>();
+        }
+        
+        // EFFECTS: Checks if the node is valid.
+        public bool IsValid()
+        {
+            return false; // TODO: Implement
+        }
     }
 }

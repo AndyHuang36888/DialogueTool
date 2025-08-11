@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DialogueTool")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6935062d41c6e8e6fce3c437edbd000c8e45b2fb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4e225092c5d3af32bcde0272e954ed52934dc42d")]
 [assembly: System.Reflection.AssemblyProductAttribute("DialogueTool")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DialogueTool")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
