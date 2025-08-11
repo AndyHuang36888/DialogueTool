@@ -22,7 +22,8 @@ namespace DialogueSystem
         // Text displayed in this dialogue node.
         public TextComponent Text { get; set; }
 
-        public LogicComponent Logic { get; set; }
+        // TODO: figure out logic component
+        // public LogicComponent Logic { get; set; }
 
 
         public DialogueNode(string id, string speaker = "")
