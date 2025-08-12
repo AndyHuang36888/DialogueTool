@@ -1,0 +1,12 @@
+#SceneName
+Name: this is Text
+    - this is a choice
+        >> Branch1 //this goes to "Branch1"
+    - this is another choice
+
+Name: this is another node
+
+##Branch1
+AnotherName: this is text
+This is some plain text
+// when reaching the branch by default it should go back
