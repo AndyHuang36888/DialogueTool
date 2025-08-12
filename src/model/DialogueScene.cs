@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 namespace DialogueSystem
 
 {
@@ -7,12 +9,13 @@ namespace DialogueSystem
         // A unique identifier for this scene.
         public string ID { get; set; }
 
-        // The first node of the dialogue scene.
-        public DialogueNode EntryNode { get; set; }
-
         // A sub-branch of dialogue nodes that can be traversed.
         // The default branch is the main dialogue branch.
         public Dictionary<string, SubBranch> SubBranchs = new Dictionary<string, SubBranch>();
+
+        // The default branch of nodes for this scene
+        // The Scene starts at the first node of this branch
+        private SubBranch DefaultBranch;
 
 
         // Constructor for the DialogueScene.

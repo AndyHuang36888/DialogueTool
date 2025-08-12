@@ -1,0 +1,13 @@
+namespace DialogueSystem
+{
+
+// runs a scene
+    class DialogueRunner
+    {
+        // Load
+        // get correct nodes
+        // iterate through correct nodes
+
+
+    }
+}
