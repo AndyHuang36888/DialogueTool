@@ -1,8 +1,10 @@
 using TextComponent = DialogueSystem.TextComponent;
 using Xunit;
 
-public class TextComponentTest
+namespace DialogueSystemTest
 {
+    public class TextComponentTest
+    {
     [Fact]
     public void TestTextComponentConstructor()
     {
@@ -87,5 +89,6 @@ public class TextComponentTest
 
         // Check if it throws an exception for a key that does not exist
         Assert.Throws<KeyNotFoundException>(() => textComponent.GetText("Nonexistent Key"));
+    }
     }
 }

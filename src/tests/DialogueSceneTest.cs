@@ -25,13 +25,13 @@ using DialogueSystem;
 
             // test add 1 node
             testScene.AddNode(testNode1);
-            Assert.Contains(testNode1, testScene.AdjacencyList.Keys);
-            Assert.Single(testScene.AdjacencyList.Keys);
+            Assert.Contains(testNode1, testScene.DialogueGraph.Keys);
+            Assert.Single(testScene.DialogueGraph.Keys);
 
             // test 2 deep  
             testScene.AddNode(testNode2);
-            Assert.Contains(testNode2, testScene.AdjacencyList.Keys);
-            Assert.Equal(2, testScene.AdjacencyList.Keys.Count);
+            Assert.Contains(testNode2, testScene.DialogueGraph.Keys);
+            Assert.Equal(2, testScene.DialogueGraph.Keys.Count);
         }
 
         [Fact]
@@ -47,18 +47,18 @@ using DialogueSystem;
             testScene.AddEdge(edge12);
 
             // test add missing node, adding single edge
-            Assert.Contains(nd1, testScene.AdjacencyList.Keys);
-            Assert.Contains(nd2, testScene.AdjacencyList.Keys);
-            Assert.Contains(edge12, testScene.AdjacencyList[nd1]);
-            Assert.Empty(testScene.AdjacencyList[nd2]);
+            Assert.Contains(nd1, testScene.DialogueGraph.Keys);
+            Assert.Contains(nd2, testScene.DialogueGraph.Keys);
+            Assert.Contains(edge12, testScene.DialogueGraph[nd1]);
+            Assert.Empty(testScene.DialogueGraph[nd2]);
 
             DialogueEdge edge31 = new DialogueEdge(nd3, nd1);
             testScene.AddEdge(edge31);
 
             // test add existing, adding single edge
-            Assert.Contains(nd1, testScene.AdjacencyList.Keys);
-            Assert.Contains(nd3, testScene.AdjacencyList.Keys);
-            Assert.Contains(edge31, testScene.AdjacencyList[nd3]);
+            Assert.Contains(nd1, testScene.DialogueGraph.Keys);
+            Assert.Contains(nd3, testScene.DialogueGraph.Keys);
+            Assert.Contains(edge31, testScene.DialogueGraph[nd3]);
         }
     }
 }
