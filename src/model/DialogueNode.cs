@@ -17,7 +17,7 @@ namespace DialogueSystem
         public string ID { get; set; }
 
         // Set of choices available in this dialogue node.
-        public HashSet<ChoiceComponent> Choices { get; }
+        public List<TextComponent> Choices { get; }
 
         // Text displayed in this dialogue node.
         public TextComponent Text { get; set; }
@@ -30,7 +30,7 @@ namespace DialogueSystem
         {
             this.ID = id;
             this.Speaker = speaker;
-            this.Choices = new HashSet<ChoiceComponent>();
+            this.Choices = new List<TextComponent>();
         }
         
         // EFFECTS: Checks if the node is valid.

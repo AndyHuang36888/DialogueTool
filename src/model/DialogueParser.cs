@@ -11,6 +11,7 @@ class DialougeParser
     const string FLAG_CHOICE = "-";
 
     public DialogueNode CurrentNode { get; }
+    public DialogueScene CurrentScene { get; }
 
     private DialougeParser()
     {

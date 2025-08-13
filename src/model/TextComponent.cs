@@ -17,7 +17,6 @@ namespace DialogueSystem
             this.ID = id;
             Text = new Dictionary<string, string>();
         }
-
         // MODIFIES: this
         // EFFECTS: Adds a new text entry to the Text dictionary. 
         // Replaces any existing entry with the same key.

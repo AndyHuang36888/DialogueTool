@@ -3,13 +3,13 @@ namespace DialogueSystem
     // Represents an edge connecting DialougeNodes
     public class DialogueEdge
     {
-        DialogueNode CurrentNode { get; set; }
-        DialogueNode NextNode { get; set; }
+        public DialogueNode From { get; set; }
+        public DialogueNode To { get; set; }
 
-        public DialogueEdge(DialogueNode curr, DialogueNode next)
+        public DialogueEdge(DialogueNode from, DialogueNode to)
         {
-            this.CurrentNode = curr;
-            this.NextNode = next;
-        }
+            this.From = from;
+            this.To = to;
+        } 
     }
 }
