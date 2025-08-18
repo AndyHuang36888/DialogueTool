@@ -4,13 +4,13 @@ namespace DialogueSystemTest
 using Xunit;
 using DialogueSystem;
 
-    public class DialogueSceneTest
+    public class DialogueBranchTest
     {
         [Fact]
         public void DialogueNodeConstructorTest()
         {
             string sceneID = "scene1";
-            DialogueScene testScene = new DialogueScene(sceneID);
+            DialogueBranch testScene = new DialogueBranch(sceneID);
             Assert.Equal(sceneID, testScene.ID);
         }
 
@@ -18,7 +18,7 @@ using DialogueSystem;
         public void AddNodeTest()
         {
             string sceneID = "scene1";
-            DialogueScene testScene = new DialogueScene(sceneID);
+            DialogueBranch testScene = new DialogueBranch(sceneID);
 
             DialogueNode testNode1 = new DialogueNode("testNode1");
             DialogueNode testNode2 = new DialogueNode("testNode2");
@@ -41,7 +41,7 @@ using DialogueSystem;
             DialogueNode nd2 = new DialogueNode("node2");
             DialogueNode nd3 = new DialogueNode("node3");
 
-            DialogueScene testScene = new DialogueScene("sceneID");
+            DialogueBranch testScene = new DialogueBranch("sceneID");
 
             DialogueEdge edge12 = new DialogueEdge(nd1, nd2);
             testScene.AddEdge(edge12);

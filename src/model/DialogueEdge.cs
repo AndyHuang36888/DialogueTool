@@ -9,7 +9,7 @@ namespace DialogueSystem
         public DialogueEdge(DialogueNode from, DialogueNode to)
         {
             this.From = from;
-            this.To = to;
+            this.To = to; 
         } 
     }
 }

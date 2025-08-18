@@ -1,4 +1,4 @@
-using System;
+using System.Security.Cryptography;
 
 namespace DialogueSystem
 {
@@ -10,33 +10,40 @@ namespace DialogueSystem
 
         // Optional speaker name for this dialogue line or component.
         // Can be empty for narration.
-        public string Speaker { get; set; }
+        public string? Speaker { get; set; }
 
         // Unique identifier for this dialogue node.
         // !!! do I need this
         public string ID { get; set; }
 
         // Set of choices available in this dialogue node.
-        public List<TextComponent> Choices { get; }
+        public List<TextComponent> Choices { get; set; }
 
         // Text displayed in this dialogue node.
-        public TextComponent Text { get; set; }
+        public TextComponent? Text { get; set; }
 
         // TODO: figure out logic component
         // public LogicComponent Logic { get; set; }
 
 
-        public DialogueNode(string id, string speaker = "")
+        public DialogueNode(string id)
         {
             this.ID = id;
-            this.Speaker = speaker;
             this.Choices = new List<TextComponent>();
         }
-        
+
         // EFFECTS: Checks if the node is valid.
         public bool IsValid()
         {
             return false; // TODO: Implement
+        }
+
+
+        // EFFECTS: Adds a choice to this node
+        public void AddChoice(TextComponent choice)
+        {
+            Choices.Add(choice);
+            // TODO add tests
         }
     }
 }

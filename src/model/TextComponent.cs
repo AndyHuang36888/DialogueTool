@@ -21,9 +21,9 @@ namespace DialogueSystem
         // EFFECTS: Adds a new text entry to the Text dictionary. 
         // Replaces any existing entry with the same key.
         // The first value is the language the text is in. The second value is the actual text.
-        public void SetText(string key, string value)
+        public void SetText(string language, string text)
         {
-            Text[key] = value;
+            Text[language] = text;
         }
 
         // MODIFIES: this
