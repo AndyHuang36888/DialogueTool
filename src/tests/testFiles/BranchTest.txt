@@ -1,0 +1,25 @@
+<LanguageName>
+# SceneName
+## main
+Name: this is Text
+    - choice 1
+        >> Branch1 
+    - choice 2
+        >>  Branch2
+    - choice 3
+        >> Branch3
+
+End Text 
+
+
+## Branch1
+This is Branch1
+
+## Branch2
+This is Branch2
+>> Branch3
+
+
+## Branch3
+This is Branch3
+>> END

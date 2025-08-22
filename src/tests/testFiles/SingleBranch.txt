@@ -1,0 +1,12 @@
+<English>
+# Test Text
+## Test Branch
+Name: This is name and text
+Name: This is name,text and choices
+    - choice 1
+    - choice 2
+    - choice 3
+This Is Text without a speaker
+---
+- this is a node seperate to the top text
+- this node only has choices
