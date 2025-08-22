@@ -29,6 +29,10 @@ namespace DialogueSystem
         // If the node already exists, do nothing
         public void AddNode(DialogueNode node)
         {
+            if (DialogueGraph.Keys.Count == 0)
+            {
+                EntryNode = node;
+            }
             if (!DialogueGraph.Keys.Contains(node))
             {
                 DialogueGraph.Add(node, new List<DialogueEdge>());
@@ -37,14 +41,14 @@ namespace DialogueSystem
 
         // MODIFIES: this
         // EFFECTS: adds an edge to the scene that connects the first node to the second
-        // If any of the edges don't exist in this scene, add them to the graph
+        // If the start of the edge isn't in this scene, throw an error
 
         public void AddEdge(DialogueEdge edge)
         {
-            // add nodes, does nothing if already added
-            AddNode(edge.From);
-            AddNode(edge.To);
-
+            if (!DialogueGraph.Keys.Contains(edge.From))
+            {
+                throw new Exception("Invalid edge added, missing starting node");
+            }
             DialogueGraph[edge.From].Add(edge);
         }
 
