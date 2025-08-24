@@ -162,6 +162,8 @@ class DialogueParser
 
         }
 
+        // TODO: add branch traversal
+
         return branch;
 
 
@@ -221,15 +223,16 @@ class DialogueParser
                     break;
 
                 case LineType.GoToLine:
-                    string destination = _currLine!.Substring(GO_TO_FLAG.Length).Trim();
-                    var condition = (currentNode.Choices.Count > 0)
-                        ? currentNode.Choices[^1].ID
-                        : "default";
+                string destination = _currLine!.Substring(GO_TO_FLAG.Length).Trim();
 
-                    var edge = CreateEdge(scene, currentNode, destination, condition);
-                    // IMPORTANT: add now; will be patched later if needed
-                    branch.AddEdge(edge);
-                    break;
+                // if a choice was just added, bind this goto to that choice; else Default
+                EdgeTrigger trig = (currentNode.Choices.Count > 0)
+                    ? EdgeTrigger.Choice(choiceIndex - 1) // last added choice
+                    : EdgeTrigger.Default();
+
+                var edge = CreateEdge(scene, currentNode, destination, trig);
+                branch.AddEdge(edge);
+                break;
 
                 default:
                     throw new Exception("Unexpeted line in node: " + type);
@@ -240,39 +243,6 @@ class DialogueParser
         }
         return currentNode;
     }
-
-    // EFFECTS: create egde connecting this to destination
-    //  saves information to backpatching list if destination node isn't created yet
-    private DialogueEdge CreateEdge(DialogueScene scene, DialogueNode from, string destination, string condition)
-    {
-        DialogueEdge edge;
-        LineType type = GetLineType(destination);
-
-        if (LineType.BranchName == type)
-        {
-            String branch = destination.Substring(BRANCH_NAME_FLAG.Length);
-            //  attempt to find branch
-            if (scene.Branches.Keys.Contains(branch))
-            {
-                return CreateEdge(from, scene.Branches[branch].EntryNode, condition);
-            }
-            // if not found pend
-            else
-            {
-                edge = new DialogueEdge(from);
-                _fixups.Add(new Fixup(edge, type, branch));
-            }
-
-        }
-        else // else is node name
-        {
-            // TODO add node navigation support
-            throw new Exception();
-        }
-        return edge;
-    }
-
-
 
     // EFFECT: Determines if the current node is finished using the current line
     // Nodes follow this structure:
@@ -379,18 +349,40 @@ class DialogueParser
         }
         _fixups.Clear();
     }
-    
+
+    // EFFECTS: create edge connecting this to destination; backpatch if needed
+    private DialogueEdge CreateEdge(DialogueScene scene, DialogueNode from, string destination, EdgeTrigger trigger)
+    {
+        DialogueEdge edge;
+        LineType type = GetLineType(destination);
+
+        if (LineType.BranchName == type)
+        {
+            string branch = destination.Substring(BRANCH_NAME_FLAG.Length);
+            if (scene.Branches.Keys.Contains(branch))
+            {
+                return CreateEdge(from, scene.Branches[branch].EntryNode, trigger);
+            }
+            else
+            {
+                edge = new DialogueEdge(from, trigger);
+                _fixups.Add(new Fixup(edge, type, branch));
+            }
+        }
+        else
+        {
+            // TODO: support direct node jumps if you add node name syntax
+            throw new Exception("Only branch goto supported right now.");
+        }
+        return edge;
+    }
 
     private DialogueEdge CreateEdge(DialogueNode from, DialogueNode to) =>
-        CreateEdge(from, to, "default");
+        CreateEdge(from, to, EdgeTrigger.Default());
 
-    private DialogueEdge CreateEdge(DialogueNode from, DialogueNode to, string condition)
+    private DialogueEdge CreateEdge(DialogueNode from, DialogueNode to, EdgeTrigger trigger)
     {
-        var edge = new DialogueEdge(from)
-        {
-            To = to,
-            condition = condition
-        };
+        DialogueEdge edge = new DialogueEdge(from, trigger) { To = to };
         return edge;
     }
 }

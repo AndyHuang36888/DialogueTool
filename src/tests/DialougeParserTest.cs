@@ -64,42 +64,8 @@ namespace DialogueSystemTest
         }
 
         [Fact]
-        public void ParseLines()
+        public void MultipleBranchTest()
         {
-
-            // // TODO test will always fail due to object reference, refactor or overload equals.
-
-            // TextComponent testTextComp = new TextComponent("No ID set");
-            // // trivial tests
-
-            // parser.ParseScene("# scene");
-            // // full node: line 1 name & text, line 2 option, line 3 option
-            // parser.ParseLine(NAME + TEXT); // test adding name and text in one line
-            // parser.ParseLine(OPTION); // test adding single option
-            // parser.ParseLine(OPTION); // test 2 deep for adding options
-
-            // // check speaker
-            // Assert.Equal(NAME, parser.currentNode.Speaker);
-
-            // // check text field
-            // testTextComp.ID = GetID("text_0");
-            // testTextComp.SetText(LANGUAGE, TEXT);
-            // Assert.Equal(testTextComp, parser.currentNode.Text);
-
-            // // check option 1
-            // testTextComp.ID = GetID("choice_0_0");
-            // testTextComp.SetText(LANGUAGE, OPTION);
-            // Assert.Equal(testTextComp, parser.currentNode.Choices[0]);
-
-            // // check option 2
-            // testTextComp.ID = GetID("_0_1");
-            // Assert.Equal(testTextComp, parser.currentNode.Choices[1]);
-
-            // // Test End current node & move to next
-            // parser.ParseLine(TEXT);
-            // Assert.True(parser.currentNode.Choices.Count == 0);
-
-            // // TODO finish tests and check other behaviors. Parsing logic yet to be decided
         }
 
 

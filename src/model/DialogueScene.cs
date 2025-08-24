@@ -1,9 +1,14 @@
+using System.Reflection;
+using Microsoft.VisualBasic;
+
 namespace DialogueSystem;
 
 class DialogueScene
 {
     public string ID;
     public Dictionary<string, DialogueBranch> Branches;
+
+    public DialogueBranch? MainBranch = null;
 
     public DialogueScene(string id)
     {
@@ -15,6 +20,10 @@ class DialogueScene
     // adds branch to scene, does nothing if branch is already addec
     public void AddBranch(DialogueBranch branch)
     {
+        if (MainBranch == null)
+        {
+            MainBranch = branch;
+        }
         if (!Branches.ContainsKey(branch.ID))
         {
             Branches.Add(branch.ID, branch);
